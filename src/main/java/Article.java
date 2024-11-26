@@ -80,14 +80,13 @@ public class Article {
 
     @Override    // Overridden toString method for a readable representation of an article object
     public String toString() {
-        return "Article{" +
-                "topic='" + topic + '\'' +
-                ", link='" + link + '\'' +
-                ", domain='" + domain + '\'' +
-                ", publishedDate=" + publishedDate +
-                ", title='" + title + '\'' +
-                ", language='" + language + '\'' +
-                ", keywords=" + keywords +
-                '}';
+        return  "Article Catogory: " + topic + "\n" +
+                ", Link = " + link + "\n" +
+                ", Domain = " + domain + "\n" +
+                ", PublishedDate = " + publishedDate + "\n" +
+                ", Title = " + title + "\n" +
+                ", Language = '" + language + '\'' +
+                ", Keywords=" + keywords  + "\n\n";
+
     }
 }
