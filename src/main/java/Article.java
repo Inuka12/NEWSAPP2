@@ -2,16 +2,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Article {
-    private String topic;
+    private String topic; // The topic  of the article
     private String link;
     private String domain;
     private LocalDateTime publishedDate;
     private String title;
     private String language;
-    private List<String> keywords;
+    private List<String> keywords;  // List of keywords associated with the article for easier filter recommendation
 
-    public Article(String topic, String link, String domain, LocalDateTime publishedDate, String title, String language) {
-        this.topic = topic;
+    public Article(String topic, String link, String domain, LocalDateTime publishedDate, String title, String language)
+
+    {
+        this.topic = topic;  // Constructor to initialize key attributes of an article
         this.link = link;
         this.domain = domain;
         this.publishedDate = publishedDate;
@@ -19,6 +21,7 @@ public class Article {
         this.language = language;
     }
 
+    //getters and setters
     public String getTopic() {
         return topic;
     }
@@ -75,7 +78,7 @@ public class Article {
         this.keywords = keywords;
     }
 
-    @Override
+    @Override    // Overridden toString method for a readable representation of an article object
     public String toString() {
         return "Article{" +
                 "topic='" + topic + '\'' +
