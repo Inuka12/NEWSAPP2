@@ -1,9 +1,9 @@
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.HashSet;
+import com.fasterxml.jackson.annotation.JsonProperty; //JSON property mapping
+import java.util.HashSet; //for working with sets
 import java.util.Set;
 
 public class User {
-    @JsonProperty("username")
+    @JsonProperty("username") // Username of the user, mapped to "username" in JSON
     private String username;
 
     @JsonProperty("password")
@@ -13,16 +13,16 @@ public class User {
     private Set<String> preferences = new HashSet<>();
 
     public User() {
-        this.preferences = new HashSet<>();
+        this.preferences = new HashSet<>(); // Default constructor initializing an empty preferences set
     }
 
-    public User(String username, String password) {
+    public User(String username, String password) {  // Constructor to initialize username,password with empty preferences
         this.username = username;
         this.password = password;
         this.preferences = new HashSet<>();
     }
 
-    public String getUsername() {
+    public String getUsername() {  //getters and setters
         return username;
     }
 
@@ -42,20 +42,20 @@ public class User {
         return preferences;
     }
 
-    public void setPreferences(Set<String> preferences) {
+    public void setPreferences(Set<String> preferences) {  // Setter for user preferences, ensuring a non-null set
         this.preferences = preferences != null ? preferences : new HashSet<>();
     }
 
-    public void addPreference(String topic) {
+    public void addPreference(String topic) {  // Method to add a topic to the user's preferences
         preferences.add(topic);
     }
 
-    public void removePreference(String topic) {
+    public void removePreference(String topic) { //not implemented (out scope)
         preferences.remove(topic);
     }
 
     @Override
-    public String toString() {
+    public String toString() {  // Overridden toString method for a readable representation of a user object
         return "User{" +
                 "username='" + username + '\'' +
                 ", preferences=" + preferences +
