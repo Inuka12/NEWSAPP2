@@ -1,80 +1,9 @@
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
-
-
-/*import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-public class MainApp {
-    public static void main(String[] args) {
-        String userFilePath = "users.json";
-        String articlesFilePath = "articles.csv";
-        String stopwordsFilePath = "stopwords.txt";
 
-        UserManager userManager = new UserManager(userFilePath);
-        FileHandler fileHandler = new FileHandler();
-        RecommendationEngine recommendationEngine = new RecommendationEngine();
 
-        try {
-            List<Article> articles = fileHandler.readArticles(articlesFilePath);
-            NLPProcessor nlpProcessor = new NLPProcessor(stopwordsFilePath);
-            nlpProcessor.processArticles(articles);
-
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Welcome! Please select an option:");
-            System.out.println("1. Sign Up");
-            System.out.println("2. Log In");
-
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-
-            User user = null;
-            if (choice == 1) {
-                System.out.println("Enter username:");
-                String username = scanner.nextLine();
-                System.out.println("Enter password:");
-                String password = scanner.nextLine();
-                if (userManager.signUp(username, password)) {
-                    user = new User(username, password);
-                    System.out.println("Sign-up successful!");
-                }
-            } else if (choice == 2) {
-                System.out.println("Enter username:");
-                String username = scanner.nextLine();
-                System.out.println("Enter password:");
-                String password = scanner.nextLine();
-                user = userManager.login(username, password);
-                if (user != null) {
-                    System.out.println("Login successful!");
-                }
-            }
-
-            if (user != null) {
-                System.out.println("Enter your preferences (comma-separated topics):");
-                String preferencesInput = scanner.nextLine();
-                String[] preferences = preferencesInput.split(",");
-                for (String preference : preferences) {
-                    userManager.addUserPreference(user, preference.trim().toLowerCase());
-                }
-
-                List<Article> recommendedArticles = recommendationEngine.recommendArticles(user, articles);
-                System.out.println("Recommended articles for you:");
-                for (Article article : recommendedArticles) {
-                    System.out.println(article);
-                }
-            }
-        } catch (IOException e) {
-            System.err.println("Error: " + e.getMessage());
-        }
-    }
-}*/
-import java.io.IOException;
-import java.util.List;
-import java.util.Scanner;
 
 public class MainApp {
     public static void main(String[] args) {
