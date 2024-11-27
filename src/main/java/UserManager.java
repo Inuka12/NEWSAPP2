@@ -43,34 +43,40 @@ public class UserManager {
         }
     }
 
-    public boolean signUp(String username, String password) {   // Method to sign up a new user
-        if (users.containsKey(username)) {
-            System.out.println("Username already exists.");
-            return false;
-        }
-        users.put(username, new User(username, password)); // Add the new user
-        saveUsers();   // Save updated users to the file
-        return true;
-    }
 
-    public User login(String username, String password) {  // Method to log in an existing user
-        User user = users.get(username);
-        if (user != null && user.getPassword().equals(password)) {   // Check if username and password match
+  public synchronized boolean signUp(String username, String password) // Synchronized method to handle user sign-up, ensuring thread safety
+  {                                                                   //only one thread can execute these methods at a time
+      if (users.containsKey(username)) {                 // Check if the username already exists in the user map
+          System.out.println("Username already exists.");
+          return false; // Notify if the username is taken,returm false.
+      }
+      users.put(username, new User(username, password));  // Add the new user to the user map
+      saveUsers();  // Save the updated user data to the file
+      return true;
+  }
+
+    public synchronized User login(String username, String password)
+    { // Synchronized method to handle user login, ensuring thread safety
+        User user = users.get(username); // Retrieve the user object
+        if (user != null && user.getPassword().equals(password)) {  // Validate the password
+
             return user;
         }
         System.out.println("Invalid username or password.");
         return null;
     }
 
-    public void addUserPreference(User user, String topic) {  // Method to add a preference to a user's preferences
-        user.addPreference(topic);
-        saveUsers(); //save changes to the file
+    public synchronized void addUserPreference(User user, String topic) {
+        user.addPreference(topic);  // Add user's preferences
+
+        saveUsers();
     }
 
-    public void removeUserPreference(User user, String topic) { //not implemented
+    public synchronized void removeUserPreference(User user, String topic) { //not implemented
         user.removePreference(topic);
         saveUsers();
     }
+
 
     public Map<String, User> getAllUsers() // Method to retrieve all users
     {
