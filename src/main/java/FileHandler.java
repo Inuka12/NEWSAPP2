@@ -20,7 +20,6 @@ public class FileHandler {
                                                                                                                  // Ignore case when matching headers
                                                                                                                  // Trim whitespace from header and field values
         {
-
             for (CSVRecord record : parser)     // Loop through each record in the CSV file
             {
                 String topic = record.get("topic");      // Extract data from each column based on header names
