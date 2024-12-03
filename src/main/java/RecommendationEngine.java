@@ -21,7 +21,7 @@ public class RecommendationEngine {
                     return keywords.stream().anyMatch(normalizedUserPreferences::contains);  // Check if any keyword matches the user preferences
                 })
                 .sorted
-                        (Comparator.comparingInt     // Sort articles by the number of matching keywords
+                        (Comparator.comparingInt     // Sort articles by the number of matching keywords in descending order
                                 (
 
                         article -> -countMatchingKeywords
