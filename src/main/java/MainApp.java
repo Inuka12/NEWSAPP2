@@ -45,8 +45,8 @@ public class MainApp {
                 System.out.println("2. Log In");
                 System.out.println("3. Exit");
 
-                int choice = scanner.nextInt();
-                scanner.nextLine();
+                int choice = getValidNumericInput(scanner);
+
 
                 switch (choice) {                                       // Handle user sign-up
                     case 1:
@@ -76,17 +76,17 @@ public class MainApp {
                             boolean loggedIn = true;
 
                             while (loggedIn) {                                  // User actions after login
-                                System.out.println("\nWelcome, " + user.getUsername() + "!");
+                                System.out.println("\nWelcome," + user.getUsername() + "!" + " Please select an option:");
                                 System.out.println("1. Enter Your Preferences");
                                 System.out.println("2. Get Recommendations");
                                 System.out.println("3. Log Out");
 
-                                int userChoice = scanner.nextInt();
-                                scanner.nextLine();
+                                int userChoice = getValidNumericInput(scanner);
+
 
                                 switch (userChoice) {                // Handle preferences
                                     case 1:
-                                        System.out.println("Enter your preferences (comma-separated topics):");
+                                        System.out.println("Enter your preferences (comma-separated ):");
                                         String preferencesInput = scanner.nextLine();
 
 
@@ -138,4 +138,18 @@ public class MainApp {
             executorService.shutdown();  // Ensure thread pool is closed
         }
     }
+
+
+    private static int getValidNumericInput(Scanner scanner) {  // Helper method to get a valid numeric input
+        while (true) {                                          // Keep prompting the user until a valid input is provided
+            System.out.print("Enter your choice: ");
+            String input = scanner.nextLine();                  // Read the user's input as a string
+            try {
+                return Integer.parseInt(input); // Convert input to an integer
+            } catch (NumberFormatException e) {  // Handle cases where the input is not a valid integer
+                System.out.println("Invalid input. Please enter a valid option.");
+            }
+        }
+    }
+
 }
